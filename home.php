@@ -5,8 +5,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html>
     <head>
-        <script  type="text/javascript" src="jquery-1.9.1.js"></script>
-        <script  type="text/javascript" src="jquery-ui-1.10.2.custom.min.js"></script>
+        <script  type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script  type="text/javascript" src="js/jquery-ui-1.10.2.custom.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -32,7 +32,9 @@ and open the template in the editor.
                             '<td>' + this.Alcohol + '</td>' +
                             '<td>' + this.Calories + '</td>' +
                             '<td>' + this.MS_Name + '</td>' +
-                            '<td><input type="button" value="Add" onclick="addToUserHistory(' + this.FNM_ID + ');"</td>' +
+                            '<td><a class="btn btn-success" href="#" onclick="addToUserHistory(' + this.FNM_ID + ');>\n\
+                <i class="icon-ok icon-white"></i> Add</a>\n\
+                </td>' +
                             '</tr>'));
                 });
             }
@@ -165,19 +167,29 @@ and open the template in the editor.
             </select>
         </div>
         <p class="well"> <i class="icon-calendar"></i> Date <input type="text" id="datepicker" />
-           <i class="icon-glass"></i> Meal: <select name="meal_type" id="meal_t">
+            <i class="icon-glass"></i> Meal: <select name="meal_type" id="meal_t">
                 <option value="Breakfast">Breakfast</option>
                 <option value="Lunch">Lunch</option>
                 <option value="Dinner">Dinner</option>
                 <option value="Snacks">Snacks</option>
             </select>
         </p>
-        <div class="well-large form-search">
+        <div class="well-large">
+            <legend>Select items:</legend>
             <table id="food_items" class="table-bordered table-hover table-striped" style="width: 100%">
                 <th>Name</th><th>Total Fat</th><th>Sat Fat</th><th>Trans Fat</th><th>Chol</th><th>Sodium
                 <th>Total Carb</th><th>Diet Fiber</th><th>Sugar</th>
                 <th>Protein</th><th>Calcium</th><th>Potassium</th><th>Alcohol</th>
                 <th>Calories</th><th>Portions</th>
+            </table>
+        </div>
+
+        <div class="well">
+            <legend>Your diet history</legend>
+            <table id="diet_history" class="table table-striped table-condensed table-hover">
+                <th>Food</th><th>Date</th><th>Meal</th>
+                <tr><td>test</td><td>tester</td><td>testest</td></tr>
+                <tr><td>test</td><td>tester</td><td>testest</td></tr>
             </table>
         </div>
 
