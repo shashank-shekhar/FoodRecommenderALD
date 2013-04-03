@@ -6,7 +6,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="index.php">Hot Serve</a>
+
+            <a class="brand" href="index.php"><img src="img/logo.png" height="40px" width="40px"/>Hot Serve</a>
             <div class="nav-collapse">
                 <ul class="nav">
                     <li class="active"><a href="home.php">Home</a></li>  
