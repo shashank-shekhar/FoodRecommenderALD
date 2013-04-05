@@ -5,18 +5,49 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html>
     <head>
-        <script  type="text/javascript" src="js/jquery-1.9.1.js"></script>
-        <script  type="text/javascript" src="js/jquery-ui-1.10.2.custom.min.js"></script>
-        <link rel="icon" href="img/logo.png" type="image/x-icon" />
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title></title>
+        <?php
+        include_once 'meta.php';
+        ?>
         <script type="text/javascript">
 
+            function populateFoodHistoryTable(id,name,time,date) {
+                var table = $('#diet_history');
+                 table.append($(
+                         '<tr><td>'+name+'</td>'
+                         +'<td>'+date+'</td>'
+                         +'<td>'+time+'</td></tr>'
+                     ));
+                
+            }
+            function addToUserHistory(id,name) {
+                var date = $('#datepicker_t').val();
+                var time = $('#meal_t :selected').val();
+                alert(id + " " + date + " " + time);
+                var query='http://localhost/ALDWebsite/saveUserHistory.php?user_id=1&date_t='+date
+                        +'&food_id='+id+'&meal_t='+time;
+                $.ajax({
+                    url: query,
+                    //data: JSON.stringify({'user_id': 1, 'date_t': date, 'food_id': id, 'meal_t': time}),
+                    type: "GET",
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: "json",
+                    success: function(data) {
+                        debugger;
+                        populateFoodHistoryTable(id,name,time,date);
+                    },
+                    error: function(data) {
+                        debugger;
+                        alert("Some Error Occured ");
+                        // alert(data.message);
+                    }
+                });
+
+
+            }
             function populateFoodTable(data) {
                 var items = data.items;
                 var table = $('#food_items');
+                $("#food_items tr:gt(0)").remove();
                 $.each(items, function() {
                     table.append($('<tr><td>' + this.FNM_Name + '</td>' +
                             '<td>' + this.Total_Fat + '</td>' +
@@ -33,7 +64,8 @@ and open the template in the editor.
                             '<td>' + this.Alcohol + '</td>' +
                             '<td>' + this.Calories + '</td>' +
                             '<td>' + this.MS_Name + '</td>' +
-                            '<td><a class="btn btn-success" href="#" onclick="addToUserHistory(' + this.FNM_ID + ');>\n\
+                            '<td align="right"><a class="btn btn-success" href="#" onclick="addToUserHistory(' + this.FNM_ID 
+                            + ',\''+this.FNM_Name+'\');">\n\
                 <i class="icon-ok icon-white"></i> Add</a>\n\
                 </td>' +
                             '</tr>'));
@@ -51,7 +83,7 @@ and open the template in the editor.
                         populateFoodTable(data);
                     },
                     error: function(data) {
-                        alert("Some Error Occured ");
+                        //alert("Some Error Occured ");
                         //alert(data.message);
                     }
                 });
@@ -60,7 +92,8 @@ and open the template in the editor.
                 var items = data.items;
                 var subType = $("#pfc");
                 subType.empty();
-
+                subType.append($('<option></option>').
+                        text("Select One"));
                 $.each(items, function() {
                     subType.append($('<option></option>').attr("value", this.id).
                             text(this.pfc_val));
@@ -79,8 +112,8 @@ and open the template in the editor.
                     },
                     error: function(data) {
 
-                        alert("Some Error Occured ");
-                        alert(data.message);
+                        // alert("Some Error Occured ");
+                        // alert(data.message);
                     }
                 });
             }
@@ -89,6 +122,8 @@ and open the template in the editor.
                 //debugger;
                 var $subType = $("#sfc");
                 $subType.empty();
+                $subType.append($('<option></option>').
+                        text("Select One"));
                 var items = data.items;
                 $.each(items, function() {
                     $subType.append($('<option></option>').attr("value", this.id).
@@ -111,8 +146,8 @@ and open the template in the editor.
                     },
                     error: function(data) {
 
-                        alert("Some Error Occured ");
-                        alert(data.message);
+                        //alert("Some Error Occured ");
+                        //alert(data.message);
                     }
                 });
             }
@@ -138,7 +173,7 @@ and open the template in the editor.
 
                     },
                     error: function() {
-                        alert("Some Error Occured");
+                        //alert("Some Error Occured");
                         //location.reload(true);
                     }
                 });
@@ -148,7 +183,7 @@ and open the template in the editor.
                 fetchMFC();
             });
             $(function() {
-                $("#datepicker").datepicker();
+                $("#datepicker_t").datepicker();
             });
         </script>
     </head>
@@ -167,7 +202,7 @@ and open the template in the editor.
                 <option> Select One</option>
             </select>
         </div>
-        <p class="well"> <i class="icon-calendar"></i> Date <input type="text" id="datepicker" />
+        <p class="well"> <i class="icon-calendar"></i> Date <input type="text" id="datepicker_t" />
             <i class="icon-glass"></i> Meal: <select name="meal_type" id="meal_t">
                 <option value="Breakfast">Breakfast</option>
                 <option value="Lunch">Lunch</option>

@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title> Hot Serve</title>
-        <script  type="text/javascript" src="js/jquery-ui-1.10.2.custom.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+        <?php
+       include_once 'meta.php';
+       ?>
         <script type="text/javascript">
             function allss() {
                 alert('hello');
