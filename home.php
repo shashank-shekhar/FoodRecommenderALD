@@ -23,7 +23,7 @@ and open the template in the editor.
                 var date = $('#datepicker_t').val();
                 var time = $('#meal_t :selected').val();
                 alert(id + " " + date + " " + time);
-                var query='http://localhost/ALDWebsite/saveUserHistory.php?user_id=1&date_t='+date
+                var query='/ALDWebsite/saveUserHistory.php?user_id=1&date_t='+date
                         +'&food_id='+id+'&meal_t='+time;
                 $.ajax({
                     url: query,
@@ -73,7 +73,7 @@ and open the template in the editor.
             }
             function fetchFood() {
                 var pfc = $('#pfc :selected').val();
-                var query = "http://localhost/ALDWebsite/getallfndetails.php?pfc_id=" + pfc;
+                var query = "/ALDWebsite/getallfndetails.php?pfc_id=" + pfc;
                 $.ajax({
                     url: query,
                     type: "GET",
@@ -101,7 +101,7 @@ and open the template in the editor.
             }
             function fetchPFC() {
                 var sfc = $('#sfc :selected').val();
-                var query = "http://localhost/ALDWebsite/getpfc.php?sfc_id=" + sfc;
+                var query = "/ALDWebsite/getpfc.php?sfc_id=" + sfc;
                 $.ajax({
                     url: query,
                     type: "GET",
@@ -134,7 +134,7 @@ and open the template in the editor.
             function fetchSFC()
             {
                 var mfc = $('#mfc :selected').val();
-                var query = "http://localhost/ALDWebsite/getSFC.php?mfc_id=" + mfc;
+                var query = "/ALDWebsite/getSFC.php?mfc_id=" + mfc;
 
                 $.ajax({
                     url: query,
@@ -164,7 +164,7 @@ and open the template in the editor.
 
             function fetchMFC() {
                 $.ajax({
-                    url: "http://localhost/ALDWebsite/getMFC.php",
+                    url: "/ALDWebsite/getMFC.php",
                     type: "GET",
                     contentType: 'application/json; charset=utf-8',
                     dataType: "json",

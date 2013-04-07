@@ -12,7 +12,7 @@
                 <ul class="nav">
                     <li class="active"><a href="home.php">Home</a></li>  
                     <li class="active"><a href="#">Nutrition Info</a></li>
-                    <li class="active"><a href="#">Restaurant Info</a></li>
+                    <li class="active"><a href="restaurant.php">Restaurant</a></li>
                 </ul>
 
                 <ul class="nav pull-right">

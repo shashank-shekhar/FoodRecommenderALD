@@ -1,5 +1,4 @@
 <?php
-require("phar://neo4jphp.phar");
 if (!(isset($_POST['username']) && isset($_POST['password']) ) || $_POST['username'] == "" || $_POST['password'] == "")
     header('Location: index.php');
 
@@ -7,8 +6,9 @@ if (!(isset($_POST['username']) && isset($_POST['password']) ) || $_POST['userna
 $username = $_POST['username'];
 $password = $_POST['password'];
 
+include_once 'globalConsts.php';
 
-$con = mysqli_connect('192.168.11.2', 'ALD_DB_user', '','ald')or die("Connection Error".mysql_error());
+$con = mysqli_connect(SERVER_ADDRESS, USER, PASS,DATABASE)or die("Connection Error".mysql_error());
 
 // to validate user
 //mysqli_select_db($con,"ald") or die ("DB Selection erro".  mysql_error());
