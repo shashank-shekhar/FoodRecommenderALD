@@ -4,7 +4,10 @@ if (isset($_REQUEST['user_id']) && isset($_REQUEST['fnm_id']) && isset($_REQUEST
 
     include_once 'globalConsts.php';
     
-    $user_id=$_SESSION['user_id'];
+    session_start();
+    $stat=session_status();
+    
+    $user_id=$_COOKIE["user_id"];
     
     $query = "Insert INTO user_rating (UR_UserID,UR_Rating,UR_FNM_ID) values(" . $user_id . "," . $_REQUEST['rating'] . ",'" . $_REQUEST['fnm_id'] . "')";
     mysql_connect(SERVER_ADDRESS, USER, PASS);

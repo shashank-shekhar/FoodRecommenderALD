@@ -3,7 +3,7 @@
 if (isset($_REQUEST['user_id']) && isset($_REQUEST['date_t']) && isset($_REQUEST['food_id']) && isset($_REQUEST['meal_t'])) {
 
     include_once 'globalConsts.php';
-    $user_id=$_SESSION['user_id'];
+    $user_id=$_COOKIE['user_id'];
     
     $query = "Insert INTO user_food_history (UFH_User_ID,UFH_FNM_ID,UFH_Quantity,UFH_Meal_Type) values(" . $user_id . "," . $_REQUEST['food_id'] . ",1,'" . $_REQUEST['meal_t'] . "')";
     mysql_connect(SERVER_ADDRESS, USER, PASS);
