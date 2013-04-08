@@ -9,9 +9,25 @@ and open the template in the editor.
         include_once 'meta.php';
         ?>
         <script type="text/javascript">
-            
-            function saveRating(id){
+
+            function saveRating(id) {
                 alert(id);
+                var rating = $('#rating_' + id + ' :selected').val();
+                alert(rating);
+                $.ajax({
+                    url: "/ALDWebsite/saveRating.php?user_id=1&fnm_id=" + id + "&rating=" + rating,
+                    type: "GET",
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: "json",
+                    success: function(data) {
+                        alert("Rating accepted");
+                    },
+                    error: function(data) {
+                        alert("Some Error Occured ");
+                        // alert(data.message);
+                    }
+                });
+
             }
 
             function populateRestaurant(data) {

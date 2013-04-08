@@ -1,11 +1,12 @@
 <?php
 
-if (isset($_REQUEST['user_id']) && isset($_REQUEST['date_t']) && isset($_REQUEST['food_id']) && isset($_REQUEST['meal_t'])) {
+if (isset($_REQUEST['user_id']) && isset($_REQUEST['fnm_id']) && isset($_REQUEST['rating'])) {
 
     include_once 'globalConsts.php';
+    
     $user_id=$_SESSION['user_id'];
     
-    $query = "Insert INTO user_food_history (UFH_User_ID,UFH_FNM_ID,UFH_Quantity,UFH_Meal_Type) values(" . $user_id . "," . $_REQUEST['food_id'] . ",1,'" . $_REQUEST['meal_t'] . "')";
+    $query = "Insert INTO user_rating (UR_UserID,UR_Rating,UR_FNM_ID) values(" . $user_id . "," . $_REQUEST['rating'] . ",'" . $_REQUEST['fnm_id'] . "')";
     mysql_connect(SERVER_ADDRESS, USER, PASS);
 
 

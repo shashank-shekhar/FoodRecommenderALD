@@ -2,8 +2,9 @@
 <html>
     <head>
         <?php
-       include_once 'meta.php';
-       ?>
+        include_once 'meta.php';
+        session_start();
+        ?>
         <script type="text/javascript">
             function allss() {
                 alert('hello');
@@ -48,26 +49,26 @@
                 </form>
             </div>
             <div class="well">
-            <form onSubmit="return validate()" action="RegisterNewUser.php" method="post" >
-                <legend>Register</legend>
-                <table>
-                    <tr>
-                        <td><input type="text" name="username" placeholder="User Name"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="email" name="email" placeholder="Email"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="password" id="password" name="pass" placeholder="Password"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="password" id="confirm_password" name="pass2" placeholder="Confirm Password"></td>
-                    </tr>
-                    <tr>
-                        <td align="right"><input type="submit" value="Register" class="btn btn-primary"></td>
-                    </tr>
-                </table>
-            </form>
+                <form onSubmit="return validate()" action="RegisterNewUser.php" method="post" >
+                    <legend>Register</legend>
+                    <table>
+                        <tr>
+                            <td><input type="text" name="username" placeholder="User Name"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="email" name="email" placeholder="Email"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="password" id="password" name="pass" placeholder="Password"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="password" id="confirm_password" name="pass2" placeholder="Confirm Password"></td>
+                        </tr>
+                        <tr>
+                            <td align="right"><input type="submit" value="Register" class="btn btn-primary"></td>
+                        </tr>
+                    </table>
+                </form>
             </div>
         </div>
         <?php

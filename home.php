@@ -10,21 +10,21 @@ and open the template in the editor.
         ?>
         <script type="text/javascript">
 
-            function populateFoodHistoryTable(id,name,time,date) {
+            function populateFoodHistoryTable(id, name, time, date) {
                 var table = $('#diet_history');
-                 table.append($(
-                         '<tr><td>'+name+'</td>'
-                         +'<td>'+date+'</td>'
-                         +'<td>'+time+'</td></tr>'
-                     ));
-                
+                table.append($(
+                        '<tr><td>' + name + '</td>'
+                        + '<td>' + date + '</td>'
+                        + '<td>' + time + '</td></tr>'
+                        ));
+
             }
-            function addToUserHistory(id,name) {
+            function addToUserHistory(id, name) {
                 var date = $('#datepicker_t').val();
                 var time = $('#meal_t :selected').val();
                 alert(id + " " + date + " " + time);
-                var query='/ALDWebsite/saveUserHistory.php?user_id=1&date_t='+date
-                        +'&food_id='+id+'&meal_t='+time;
+                var query = '/ALDWebsite/saveUserHistory.php?user_id=1&date_t=' + date
+                        + '&food_id=' + id + '&meal_t=' + time;
                 $.ajax({
                     url: query,
                     //data: JSON.stringify({'user_id': 1, 'date_t': date, 'food_id': id, 'meal_t': time}),
@@ -33,7 +33,7 @@ and open the template in the editor.
                     dataType: "json",
                     success: function(data) {
                         debugger;
-                        populateFoodHistoryTable(id,name,time,date);
+                        populateFoodHistoryTable(id, name, time, date);
                     },
                     error: function(data) {
                         debugger;
@@ -64,8 +64,8 @@ and open the template in the editor.
                             '<td>' + this.Alcohol + '</td>' +
                             '<td>' + this.Calories + '</td>' +
                             '<td>' + this.MS_Name + '</td>' +
-                            '<td align="right"><a class="btn btn-success" href="#" onclick="addToUserHistory(' + this.FNM_ID 
-                            + ',\''+this.FNM_Name+'\');">\n\
+                            '<td align="right"><a class="btn btn-success" href="#" onclick="addToUserHistory(' + this.FNM_ID
+                            + ',\'' + this.FNM_Name + '\');">\n\
                 <i class="icon-ok icon-white"></i> Add</a>\n\
                 </td>' +
                             '</tr>'));
@@ -183,6 +183,20 @@ and open the template in the editor.
                 fetchMFC();
             });
             $(function() {
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1; //January is 0!
+
+                var yyyy = today.getFullYear();
+                if (dd < 10) {
+                    dd = '0' + dd;
+                }
+                if (mm < 10) {
+                    mm = '0' + mm;
+                }
+                today = mm + '/' + dd + '/' + yyyy;
+                //document.write(today);
+                $("#datepicker_t").val(mm+'/'+dd+'/'+yyyy);
                 $("#datepicker_t").datepicker();
             });
         </script>
