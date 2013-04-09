@@ -18,7 +18,7 @@ if (mysqli_connect_errno()) {
 mysql_select_db(DATABASE);
 $sql = "SELECT UR_FNM_ID FROM user_rating, user_user_r_taste
         WHERE UR_UserID in(SELECT USER_2_ID FROM user_user_r_taste 
-        WHERE USER_1_ID="+$user_id+" AND R>0.5)";
+        WHERE USER_1_ID="+$user_id+" AND R>0)";
 $result = mysql_query($sql);
 
 if (mysql_num_rows($result)) {
