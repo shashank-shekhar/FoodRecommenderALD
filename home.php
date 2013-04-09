@@ -22,7 +22,7 @@ and open the template in the editor.
             function addToUserHistory(id, name) {
                 var date = $('#datepicker_t').val();
                 var time = $('#meal_t :selected').val();
-                alert(id + " " + date + " " + time);
+                //alert(id + " " + date + " " + time);
                 var query = '/ALDWebsite/saveUserHistory.php?user_id=1&date_t=' + date
                         + '&food_id=' + id + '&meal_t=' + time;
                 $.ajax({
@@ -238,8 +238,6 @@ and open the template in the editor.
             <legend>Your diet history</legend>
             <table id="diet_history" class="table table-striped table-condensed table-hover">
                 <th>Food</th><th>Date</th><th>Meal</th>
-                <tr><td>test</td><td>tester</td><td>testest</td></tr>
-                <tr><td>test</td><td>tester</td><td>testest</td></tr>
             </table>
         </div>
 

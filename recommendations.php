@@ -29,7 +29,7 @@ and open the template in the editor.
                 //$("#recc tr:gt(0)").remove();
                 var count = 0;
                 $.each(items, function() {
-                    if (count % 2 == 0) {
+                    if (count % 3 != 0) {
                         table.append($('<tr><td>' + this.FNM_NAME + '</td></tr>'));
                     }
                     count += 1;

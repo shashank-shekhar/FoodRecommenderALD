@@ -22,11 +22,11 @@ $sql = "SELECT FNM_NAME FROM food_nutrition_master"
         . " WHERE UR_UserID in(SELECT USER_2_ID FROM user_user_r_taste "
         . " WHERE USER_1_ID=" . $user_id . " AND R>0.1))";
 $result = mysql_query($sql);
-
+$items = array();
 if (mysql_num_rows($result)) {
     $response["success"] = 1;
 
-    $items = array();
+    
 
     while ($row = mysql_fetch_array($result)) {
         $item = array();
